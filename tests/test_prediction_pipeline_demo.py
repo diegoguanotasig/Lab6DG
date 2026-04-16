@@ -87,3 +87,24 @@ def test_end_to_end_train_and_eval(feature_target_sample):
     assert isinstance(score, float)
     assert np.isfinite(score)
     
+def test_data_preparation_with_minimal_data():
+    df = pd.DataFrame({
+        "price": [1000000],
+        "area": [500],
+        "bedrooms": [2],
+        "bathrooms": [1],
+        "stories": [1],
+        "mainroad": ["yes"],
+        "guestroom": ["no"],
+        "basement": ["no"],
+        "hotwaterheating": ["no"],
+        "airconditioning": ["yes"],
+        "parking": [1],
+        "prefarea": ["no"],
+        "furnishingstatus": ["furnished"],
+    })
+
+    features, target = data_preparation(df)
+
+    assert len(features) == 1
+    assert len(target) == 1
