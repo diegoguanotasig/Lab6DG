@@ -10,15 +10,20 @@ on:
     branches: [ "main" ]
 
 jobs:
-  test:
+ build:
+   runs-on: self-hosted
+ 
+ test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      #- name: Set up Python
+      - name: Show Python
+        run: python3 --version
+       # uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
@@ -36,6 +41,7 @@ jobs:
 # Paso 3 Agregar ML pipeline en CI
       - name: Run ML demo pipeline
         run: python prediction_pipeline_demo.py
-      
+# Paso 4 Configurar self-hosted runner
+        
       # TODO: Add a step here to run the demo pipeline end-to-end
       # The goal is to execute prediction_pipeline_demo.py so CI logs show the model’s R^2 score.
