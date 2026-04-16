@@ -24,8 +24,8 @@ jobs:
       - name: Show Python
         run: python3 --version
        # uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+ #       with:
+  #        python-version: "3.11"
 
       - name: Install dependencies
         run: |
